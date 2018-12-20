@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 //2018-10-13
 //Kevin Langlois
@@ -8,6 +9,30 @@ using UnityEngine.SceneManagement;
 public class MenuPrincipal : MonoBehaviour
 {
 
+    public GameObject victoireTitre;
+    public GameObject defaiteTitre;
+    public int countJoueur2;
+    public void Start()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+     
+
+        if (sceneName == "Scene_FinJeu")
+        {
+            Debug.Log("IUOIIUOPUIOCSGUI");
+            countJoueur2 = VariablesGlobales.effectifTotal_joueurs - VariablesGlobales.effectifTotal_joueur_01;
+            if (VariablesGlobales.effectifTotal_joueur_01 < countJoueur2)
+            {
+                defaiteTitre.SetActive(true);
+            }
+            else
+            {
+                victoireTitre.SetActive(true);
+            }
+        }
+    }
     public void JouerSolo()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

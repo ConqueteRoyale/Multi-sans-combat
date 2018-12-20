@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18312113, g: 0.22879107, b: 0.30661526, a: 1}
+  m_IndirectSpecularColor: {r: 0.18312068, g: 0.22879033, b: 0.30661458, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6219,7 +6219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -113.00001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &155605568
@@ -17305,7 +17305,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 2
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -18910,7 +18910,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0
+  m_padding: 7.8125005
   m_canvasRenderer: {fileID: 499450225}
   m_TextComponent: {fileID: 460169974}
   m_materialReferenceIndex: 1
@@ -29500,7 +29500,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -113}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &815874268
@@ -38762,6 +38762,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be996f5e8f4c2f45b703d98d72cb882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoireTitre: {fileID: 813332988}
+  defaiteTitre: {fileID: 2030570263}
+  countJoueur2: 0
 --- !u!1 &1120138221
 GameObject:
   m_ObjectHideFlags: 0
@@ -48615,7 +48618,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1114327801}
-        m_MethodName: QuitterJeu
+        m_MethodName: Retour
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -56859,7 +56862,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: VICTOIRE
+  m_text: FIN !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 846300313ffa0c44a8e729b5cf0189bd, type: 2}
   m_sharedMaterial: {fileID: 21750454676449016, guid: 846300313ffa0c44a8e729b5cf0189bd,
@@ -56928,9 +56931,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1630861251}
-    characterCount: 8
+    characterCount: 5
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -59024,7 +59027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1676588838
 Transform:
   m_ObjectHideFlags: 0
@@ -74006,7 +74009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -113.00001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2031986229
@@ -78437,6 +78440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be996f5e8f4c2f45b703d98d72cb882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoireTitre: {fileID: 813332988}
+  defaiteTitre: {fileID: 2030570263}
+  countJoueur2: 0
 --- !u!4 &2141749165
 Transform:
   m_ObjectHideFlags: 0

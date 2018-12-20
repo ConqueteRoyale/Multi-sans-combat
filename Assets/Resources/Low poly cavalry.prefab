@@ -3257,8 +3257,8 @@ MonoBehaviour:
   minAttackDistance: 15
   castleStoppingDistance: 4
   addGold: 0
-  attackTag: Enemy
-  attackCastleTag: Enemy Castle
+  attackTag: Knight
+  attackCastleTag: Building
   dieParticles: {fileID: 19855120, guid: 3ae3aa25ea9f179409ac74246bd14483, type: 2}
   ragdoll: {fileID: 1309205928000668, guid: 785d889b95db928498a06839ebd7c719, type: 2}
   attackAudio: {fileID: 8300000, guid: 19c7077c998d6194397011ec1aecceea, type: 3}

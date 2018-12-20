@@ -19,11 +19,11 @@ public class GestionEconomie : MonoBehaviour {
 
         
         // Au début de la partie, on définit les prix des batiments
-        VariablesGlobales.prixBatiments[0] = 1500; // La mine
-        VariablesGlobales.prixBatiments[1] = 1700; // La grande mine
-        VariablesGlobales.prixBatiments[2] = 1500; // La caserne des lanciers
-        VariablesGlobales.prixBatiments[3] = 1500; // La caserne des chevaliers
-        VariablesGlobales.prixBatiments[4] = 7500; // La caserne des géants
+        VariablesGlobales.prixBatiments[0] = 500; // La mine
+        VariablesGlobales.prixBatiments[1] = 700; // La grande mine
+        VariablesGlobales.prixBatiments[2] = 500; // La caserne des lanciers
+        VariablesGlobales.prixBatiments[3] = 500; // La caserne des chevaliers
+        VariablesGlobales.prixBatiments[4] = 500; // La caserne des géants
         
         InvokeRepeating("economie", 0f, 0.5f);
 	}

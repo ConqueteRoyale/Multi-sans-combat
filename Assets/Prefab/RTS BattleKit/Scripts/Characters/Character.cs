@@ -150,26 +150,23 @@ public class Character : Photon.MonoBehaviour
         /* ==========================================================================================================================================================================================*/
         //find closest enemy
         /* ==========================================================================================================================================================================================*/
-        // if (currentTarget != null)
-        //{
-        Debug.Log("Cherche traget");
-        findCurrentTarget();
-        // }
+
+         findCurrentTarget();
+       
 
         /* ==========================================================================================================================================================================================*/
         //if character ran out of lives add blood particles, add gold and destroy character
         /* ==========================================================================================================================================================================================*/
         if (lives < 0)
         {
-            Debug.Log("Inférieur a 0");
             lives = 0;
             StartCoroutine(die());
         }
 
         //check if character must go to a clicked position
-        Debug.Log("il marche 167");
+
         checkForClickedPosition();
-        Debug.Log("il marche 168");
+
         if (!goingToClickedPos && walkRandomly)
         {
             if (area != null)
@@ -199,14 +196,14 @@ public class Character : Photon.MonoBehaviour
                 }
             }
 
-            // return;
+             //return;
         }
         else if (agent.stoppingDistance != defaultStoppingDistance)
         {
             agent.stoppingDistance = defaultStoppingDistance;
         }
 
-        if (!goingToClickedPos)
+if (!goingToClickedPos)
         {
             Debug.Log("il marche 207");
             //If there's a currentTarget and its within the attack range, move agent to currenttarget
@@ -299,12 +296,22 @@ public class Character : Photon.MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (Vector3.Distance(transform.position, targetPosition) < agent.stoppingDistance)
+            {
+                goingToClickedPos = false;
+                CharacterManager.target.SetActive(false);
+
+            }
+        }
     }
 
     public void findClosestCastle()
     {
         //find the castles that should be attacked by this character
         GameObject[] castles = GameObject.FindGameObjectsWithTag(attackCastleTag);
+
 
         //distance between character and its nearest castle
         float closestCastle = Mathf.Infinity;
@@ -334,7 +341,7 @@ public class Character : Photon.MonoBehaviour
     {
         //find all potential targets (enemies of this character)
         enemies = GameObject.FindGameObjectsWithTag(attackTag);
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAA :" + enemies.Length);
+        Debug.Log("A :" + enemies.Length);
         //distance between character and its nearest enemy
         float closestDistance = Mathf.Infinity;
 

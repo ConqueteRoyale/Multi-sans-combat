@@ -10,7 +10,7 @@ public static class VariablesGlobales {
 
         // Les effectifs totaux des joueurs
       public static int effectifTotal_joueur_01 = 0; 
-      public static int effectifTotal_joueur_02 = 0; 
+      public static int effectifTotal_joueurs = 0; 
       public static int effectifTotal_joueur_03 = 0; 
       public static int effectifTotal_joueur_04 = 0;
 

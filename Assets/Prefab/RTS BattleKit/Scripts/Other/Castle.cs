@@ -14,6 +14,17 @@ public class Castle : MonoBehaviour {
 
     public Image healthBar;
 
+    private void Start()
+    {
+        StartCoroutine(endGameAlternatif());
+    }
+    
+    public IEnumerator endGameAlternatif()
+    {
+        yield return new WaitForSeconds(180f);
+        Die();
+    }
+
     void Update()
     {
         healthBar.fillAmount = lives / startLives;

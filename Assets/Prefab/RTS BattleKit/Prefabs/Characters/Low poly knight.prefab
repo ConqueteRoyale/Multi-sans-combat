@@ -1072,7 +1072,7 @@ MonoBehaviour:
   castleStoppingDistance: 1
   addGold: 0
   attackTag: Enemy
-  attackCastleTag: Enemy Castle
+  attackCastleTag: Building
   dieParticles: {fileID: 19855120, guid: 3ae3aa25ea9f179409ac74246bd14483, type: 2}
   ragdoll: {fileID: 1486653572614328, guid: b5002bd185a29c64baaa34c77ea8c7a2, type: 2}
   attackAudio: {fileID: 8300000, guid: 19c7077c998d6194397011ec1aecceea, type: 3}
@@ -1086,6 +1086,11 @@ MonoBehaviour:
   skeletonAmount: 0
   newSkeletonsWaitTime: 0
   selectedObject: {fileID: 0}
+  Colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
 --- !u!136 &13641308
 CapsuleCollider:
   m_ObjectHideFlags: 1

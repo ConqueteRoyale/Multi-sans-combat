@@ -84,6 +84,7 @@ public class CharacterManager : Photon.MonoBehaviour {
     void Start()
     {
         target.SetActive(false);
+        StartCoroutine(enemiesLeft());
     }
 
     void Update(){
@@ -124,6 +125,7 @@ public class CharacterManager : Photon.MonoBehaviour {
             // find and store all selectable objects (objects in scene with knight tag)
             /* ==========================================================================================================================================================================================*/
             knights = GameObject.FindGameObjectsWithTag("Knight");
+     
 
             //if player presses d, deselect all characters
             if (Input.GetKeyDown(deselectKey))
@@ -202,12 +204,24 @@ public class CharacterManager : Photon.MonoBehaviour {
 			Character character = knight.GetComponent<Character>();
 			character.selected = true;	
 			character.selectedObject.SetActive(true);
-			}
+          
+
+            }
 			}
 			}
 		}
     }
 
+
+    public IEnumerator enemiesLeft()
+    {
+        yield return new WaitForSeconds(175f);
+        VariablesGlobales.effectifTotal_joueurs = 0;
+        foreach (GameObject knight in knights)
+        {
+            VariablesGlobales.effectifTotal_joueurs++;
+        }
+    }
     /* ==========================================================================================================================================================================================*/
     /* ================================================================ SELECTION OF UNIT ANOTHER ONE   =========================================================================================*/
     /* ==========================================================================================================================================================================================*/
