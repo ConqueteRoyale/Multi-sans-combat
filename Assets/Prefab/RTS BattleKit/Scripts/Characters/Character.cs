@@ -65,6 +65,7 @@ public class Character : Photon.MonoBehaviour
 
     void Start()
     {
+
         source = GetComponent<AudioSource>();
 
         //character is not selected
@@ -99,8 +100,9 @@ public class Character : Photon.MonoBehaviour
     void Update()
     {
 
-        
-        if (photonView.isMine == false && PhotonNetwork.connected == true) {
+
+        if (photonView.isMine == false && PhotonNetwork.connected == true)
+        {
             return;
         }
 
@@ -148,11 +150,11 @@ public class Character : Photon.MonoBehaviour
         /* ==========================================================================================================================================================================================*/
         //find closest enemy
         /* ==========================================================================================================================================================================================*/
-       // if (currentTarget != null)
+        // if (currentTarget != null)
         //{
-            Debug.Log("Cherche traget");
-            findCurrentTarget();
-       // }
+        Debug.Log("Cherche traget");
+        findCurrentTarget();
+        // }
 
         /* ==========================================================================================================================================================================================*/
         //if character ran out of lives add blood particles, add gold and destroy character
@@ -197,7 +199,7 @@ public class Character : Photon.MonoBehaviour
                 }
             }
 
-           // return;
+            // return;
         }
         else if (agent.stoppingDistance != defaultStoppingDistance)
         {
@@ -206,7 +208,7 @@ public class Character : Photon.MonoBehaviour
 
         if (!goingToClickedPos)
         {
-       Debug.Log("il marche 207");
+            Debug.Log("il marche 207");
             //If there's a currentTarget and its within the attack range, move agent to currenttarget
             // 
             if (currentTarget != null && Vector3.Distance(transform.position, currentTarget.transform.position) < minAttackDistance)
@@ -236,6 +238,16 @@ public class Character : Photon.MonoBehaviour
                     Debug.Log("Perd des points de vie");
                     currentTarget.gameObject.GetComponent<Character>().lives -= Time.deltaTime * damage;
                     Debug.Log(" points de vie" + currentTarget.gameObject.GetComponent<Character>().lives);
+                    /***********************************************************************************************************************************/
+                    //Je detruit l'unité sur le network lorsque sa vie atteint 0.
+                    //Lorsque la vie de la target de l'unité est 0 elle se détruit sur tout le network je crois que c'est le mieux qu'on peut atteindre en terme de synchronisation
+                    if (currentTarget.gameObject.GetComponent<Character>().lives < 0)
+                    {
+                        StartCoroutine(die());
+                    }
+
+                    /************************************************************************************************************************************/
+
                 }
 
                 //if its still traveling to the target, play running animation
@@ -339,7 +351,7 @@ public class Character : Photon.MonoBehaviour
                 //if this enemy is closest to character, set closest distance to distance between character and enemy
                 closestDistance = Vector3.Distance(transform.position, potentialTarget.transform.position);
                 //also set current target to closest target (this enemy)
-                
+
                 if (!currentTarget || (currentTarget && Vector3.Distance(transform.position, currentTarget.position) > 2))
                 {
                     currentTarget = potentialTarget.transform;
@@ -399,7 +411,7 @@ public class Character : Photon.MonoBehaviour
     public IEnumerator die()
     {
         Debug.Log("DIE BITCH");
-        
+
         if (ragdoll == null)
         {
             Vector3 position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
@@ -410,7 +422,7 @@ public class Character : Photon.MonoBehaviour
         }
         else
         {
-            PhotonNetwork.Instantiate(ragdoll.name, Vector3.up, Quaternion.identity,0);
+            PhotonNetwork.Instantiate(ragdoll.name, gameObject.transform.position, Quaternion.identity, 0);
         }
 
         foreach (Character character in GameObject.FindObjectsOfType<Character>())
@@ -418,23 +430,23 @@ public class Character : Photon.MonoBehaviour
             if (character != this)
                 character.findCurrentTarget();
         }
-        
+
         yield return new WaitForEndOfFrame();
 
         PhotonNetwork.Destroy(gameObject);
     }
 
-    //essayer d'envoyer la vie sur le network
-     void OnPhotonViewSerialize(PhotonStream stream, PhotonMessageInfo info)
+    //essayer d'envoyer la vie sur le network************************************************************************************************
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
             stream.SendNext(lives);
         }
 
-        else if (stream.isReading)
+        else
         {
-            lives = (float)stream.ReceiveNext();
+            this.lives = (float)stream.ReceiveNext();
         }
     }
 }

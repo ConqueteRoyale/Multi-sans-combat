@@ -71,19 +71,19 @@ public class PlayerNetwork : MonoBehaviour {
     {
         if(PlayersInGame == 1)
         {
-            PhotonNetwork.Instantiate("Main Castle", new Vector3(-19.83f, -0.51f, -20.66f), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Main Castle", new Vector3(-19.83f, -0.47f, -20.66f), Quaternion.identity, 0);
         }
         else if(PlayersInGame ==2)
         {
-            PhotonNetwork.Instantiate("Main Castle", new Vector3(16f, -0.51f, -15.75f), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Main Castle", new Vector3(16f, -0.47f, -15.75f), Quaternion.identity, 0);
         }
         else if(PlayersInGame == 3)
         {
-            PhotonNetwork.Instantiate("Main Castle", new Vector3(15.16f, -0.51f, 16.38f), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Main Castle", new Vector3(15.16f, -0.47f, 16.38f), Quaternion.identity, 0);
         }
         else
         {
-            PhotonNetwork.Instantiate("Main Castle", new Vector3(-16.57f, -0.51f, 15.91f), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Main Castle", new Vector3(-16.57f, -0.47f, 15.91f), Quaternion.identity, 0);
         }
     }
 }

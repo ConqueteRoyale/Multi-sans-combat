@@ -1850,6 +1850,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114732903944472586}
   - {fileID: 114551692871448220}
+  - {fileID: 114000013598431042}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
