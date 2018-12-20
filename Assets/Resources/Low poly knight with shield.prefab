@@ -1656,11 +1656,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 100
-  damage: 15
-  minAttackDistance: 20
-  castleStoppingDistance: 1.5
+  damage: 20
+  minAttackDistance: 100
+  castleStoppingDistance: 2.5
   addGold: 0
-  attackTag: Enemy
+  attackTag: Knight
   attackCastleTag: Enemy Castle
   dieParticles: {fileID: 19855120, guid: 3ae3aa25ea9f179409ac74246bd14483, type: 2}
   ragdoll: {fileID: 1993842751518066, guid: d9c4af7babc25f043bfa56344295d87a, type: 2}
@@ -1675,6 +1675,11 @@ MonoBehaviour:
   skeletonAmount: 0
   newSkeletonsWaitTime: 0
   selectedObject: {fileID: 0}
+  Colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &114359511908490448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1847,6 +1852,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114609542218263074}
   - {fileID: 114654342300721406}
+  - {fileID: 114325511461040472}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -2045,7 +2051,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 1.5
+  m_Speed: 1.3
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 300

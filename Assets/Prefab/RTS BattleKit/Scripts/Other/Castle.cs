@@ -1,28 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Castle : MonoBehaviour {
 	
 	//variables visible in the inspector
 	public float lives;
+    public float startLives;
 	public float size;
-	public GameObject fracture;
-	
-	void Update(){
-	//destroy castle when lives are 0
-	if(lives <= 0f){
-		lives = 0;
-		
-		//if a fractured version of this part of the castle has been assigned, instantiate it in order to have a cool destruction effect (not recommended on mobile devices)
-		if(fracture && gameObject.name != "Castle gate" && gameObject.name != "1"){
-			Instantiate(fracture, transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0));
-		}
-		else if(fracture){
-			Instantiate(fracture, transform.position, Quaternion.Euler(0, 0, 0));
-		}
-		
-		Destroy(gameObject);
-	}
-	}
+
+    public float regeneration = 0f;
+
+    public Image healthBar;
+
+    void Update()
+    {
+        healthBar.fillAmount = lives / startLives;
+
+        if (lives <= 0f)
+        {
+            lives = 0;
+            Destroy(gameObject);
+            Die();
+        }
+
+        if (lives < startLives)
+        {
+            lives += regeneration + Time.deltaTime;
+
+            if (lives > 200f)
+            {
+                lives = 200f;
+            }
+        }
+    }
+
+    void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

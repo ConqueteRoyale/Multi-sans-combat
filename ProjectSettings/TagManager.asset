@@ -7,17 +7,12 @@ TagManager:
   - Friendly
   - DamageCollider
   - Enemy
-  - Formation
-  - Ennemy
   - Map
   - Building
   - RTSManager
   - Knight
   - Player Castle
-  - 'Enemy Castle '
-  - Enemy spawn position
   - Enemy Castle
-  - Mobile units button
   - Battle ground
   layers:
   - Default

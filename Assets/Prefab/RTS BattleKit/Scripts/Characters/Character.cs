@@ -61,6 +61,8 @@ public class Character : Photon.MonoBehaviour
 
     private ParticleSystem dustEffect;
 
+    public Color[] Colors = new Color[] { Color.red, Color.blue, Color.yellow, Color.green };
+
     void Start()
     {
         source = GetComponent<AudioSource>();
@@ -82,6 +84,8 @@ public class Character : Photon.MonoBehaviour
         selectedObject = transform.Find("selected object").gameObject;
         selectedObject.SetActive(false);
 
+        findClosestCastle();
+
         //set healtbar value
         healthbar.GetComponent<Slider>().maxValue = lives;
         startLives = lives;
@@ -94,10 +98,19 @@ public class Character : Photon.MonoBehaviour
 
     void Update()
     {
-        if(photonView.isMine == false && PhotonNetwork.connected == true){
+
+        
+        if (photonView.isMine == false && PhotonNetwork.connected == true) {
             return;
         }
+
         bool walkRandomly = true;
+
+        if (castle == null)
+        {
+            findClosestCastle();
+        }
+
 
         /* ==========================================================================================================================================================================================*/
         // IDLE ANIMATION FOR UNIT 
@@ -135,32 +148,32 @@ public class Character : Photon.MonoBehaviour
         /* ==========================================================================================================================================================================================*/
         //find closest enemy
         /* ==========================================================================================================================================================================================*/
-        if (currentTarget == null)
-        {
+       // if (currentTarget != null)
+        //{
+            Debug.Log("Cherche traget");
             findCurrentTarget();
-        }
-        else
-        {
-            walkRandomly = false;
-        }
+       // }
 
         /* ==========================================================================================================================================================================================*/
         //if character ran out of lives add blood particles, add gold and destroy character
         /* ==========================================================================================================================================================================================*/
-        if (lives < 1)
+        if (lives < 0)
         {
+            Debug.Log("Inférieur a 0");
+            lives = 0;
             StartCoroutine(die());
         }
 
         //check if character must go to a clicked position
+        Debug.Log("il marche 167");
         checkForClickedPosition();
-
+        Debug.Log("il marche 168");
         if (!goingToClickedPos && walkRandomly)
         {
             if (area != null)
             {
-                if (agent.stoppingDistance > 2)
-                    agent.stoppingDistance = 2;
+                if (agent.stoppingDistance > 1)
+                    agent.stoppingDistance = 0.25f;
 
 
                 if (randomTarget != Vector3.zero)
@@ -184,23 +197,23 @@ public class Character : Photon.MonoBehaviour
                 }
             }
 
-            return;
+           // return;
         }
         else if (agent.stoppingDistance != defaultStoppingDistance)
         {
             agent.stoppingDistance = defaultStoppingDistance;
         }
 
-        //first check if character is not selected and moving to a clicked position
         if (!goingToClickedPos)
         {
+       Debug.Log("il marche 207");
             //If there's a currentTarget and its within the attack range, move agent to currenttarget
+            // 
             if (currentTarget != null && Vector3.Distance(transform.position, currentTarget.transform.position) < minAttackDistance)
             {
-                if (!wizardSpawns)
-                    agent.isStopped = false;
 
                 agent.destination = currentTarget.position;
+                Debug.Log("VAS CHERCHER");
 
                 //check if character has reached its target and than rotate towards target and attack it
                 if (Vector3.Distance(currentTarget.position, transform.position) <= agent.stoppingDistance)
@@ -220,7 +233,9 @@ public class Character : Photon.MonoBehaviour
                         source.Play();
                     }
 
+                    Debug.Log("Perd des points de vie");
                     currentTarget.gameObject.GetComponent<Character>().lives -= Time.deltaTime * damage;
+                    Debug.Log(" points de vie" + currentTarget.gameObject.GetComponent<Character>().lives);
                 }
 
                 //if its still traveling to the target, play running animation
@@ -272,21 +287,6 @@ public class Character : Photon.MonoBehaviour
                 }
             }
         }
-
-        /* ==========================================================================================================================================================================================*/
-        //if character is going to clicked position...
-        /* ==========================================================================================================================================================================================*/
-        else
-        {
-            //if character is close enough to clicked position, let it attack enemies again
-            if (Vector3.Distance(transform.position, targetPosition) < agent.stoppingDistance + 1)
-            {
-                goingToClickedPos = false;
-
-                if (!wizardSpawns)
-                    agent.isStopped = false;
-            }
-        }
     }
 
     public void findClosestCastle()
@@ -312,6 +312,7 @@ public class Character : Photon.MonoBehaviour
         //Define a position to attack the castles(to spread characters when they are attacking the castle)
         if (castle != null)
             castleAttackPosition = castle.transform.position;
+
     }
 
     /* ==========================================================================================================================================================================================*/
@@ -321,21 +322,28 @@ public class Character : Photon.MonoBehaviour
     {
         //find all potential targets (enemies of this character)
         enemies = GameObject.FindGameObjectsWithTag(attackTag);
-
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAA :" + enemies.Length);
         //distance between character and its nearest enemy
         float closestDistance = Mathf.Infinity;
 
         foreach (GameObject potentialTarget in enemies)
         {
+            Debug.Log("Attaquant" + gameObject.transform.GetChild(2).GetComponent<Renderer>().material.color);
+            Debug.Log("Enemi" + potentialTarget.transform.GetChild(2).GetComponent<Renderer>().material.color);
+
             //check if there are enemies left to attack and check per enemy if its closest to this character
-            if (Vector3.Distance(transform.position, potentialTarget.transform.position) < closestDistance && potentialTarget != null)
+            // 
+            if (Vector3.Distance(transform.position, potentialTarget.transform.position) < closestDistance && potentialTarget != null && gameObject.transform.GetChild(2).GetComponent<Renderer>().material.color != potentialTarget.transform.GetChild(2).GetComponent<Renderer>().material.color)
             {
+                Debug.Log("Enemi en cours d'attaque");
                 //if this enemy is closest to character, set closest distance to distance between character and enemy
                 closestDistance = Vector3.Distance(transform.position, potentialTarget.transform.position);
                 //also set current target to closest target (this enemy)
+                
                 if (!currentTarget || (currentTarget && Vector3.Distance(transform.position, currentTarget.position) > 2))
                 {
                     currentTarget = potentialTarget.transform;
+                    Debug.Log(currentTarget);
                 }
             }
         }
@@ -381,6 +389,7 @@ public class Character : Photon.MonoBehaviour
                     CharacterManager.target.transform.position = hit.point;
                     CharacterManager.target.SetActive(true);
                 }
+
         }
     }
 
@@ -389,6 +398,8 @@ public class Character : Photon.MonoBehaviour
     /* ==========================================================================================================================================================================================*/
     public IEnumerator die()
     {
+        Debug.Log("DIE BITCH");
+        
         if (ragdoll == null)
         {
             Vector3 position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
@@ -399,7 +410,7 @@ public class Character : Photon.MonoBehaviour
         }
         else
         {
-            Instantiate(ragdoll, transform.position, transform.rotation);
+            PhotonNetwork.Instantiate(ragdoll.name, Vector3.up, Quaternion.identity,0);
         }
 
         foreach (Character character in GameObject.FindObjectsOfType<Character>())
@@ -407,8 +418,23 @@ public class Character : Photon.MonoBehaviour
             if (character != this)
                 character.findCurrentTarget();
         }
-
+        
         yield return new WaitForEndOfFrame();
-        Destroy(gameObject);
+
+        PhotonNetwork.Destroy(gameObject);
+    }
+
+    //essayer d'envoyer la vie sur le network
+     void OnPhotonViewSerialize(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(lives);
+        }
+
+        else if (stream.isReading)
+        {
+            lives = (float)stream.ReceiveNext();
+        }
     }
 }

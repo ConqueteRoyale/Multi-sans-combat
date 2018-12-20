@@ -93,7 +93,7 @@ public class ColorPerPlayerApply : PunBehaviour
         { 
             transform.GetChild(2).GetComponent<Renderer>().material.color = colorPickerCache.Colors[_index];
 			transform.GetChild(3).GetComponent<Renderer>().material.color = colorPickerCache.Colors[_index];
-            Debug.Log(colorPickerCache.Colors[_index]);
+
 		}
 
     }

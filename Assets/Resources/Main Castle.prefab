@@ -838,11 +838,11 @@ GameObject:
   - component: {fileID: 208632873792153034}
   - component: {fileID: 65204050515362032}
   - component: {fileID: 114335006747128614}
-  - component: {fileID: 114402252299620088}
   - component: {fileID: 114594186812789448}
   - component: {fileID: 114887629586748610}
   - component: {fileID: 114457649527667388}
   - component: {fileID: 23124259473721580}
+  - component: {fileID: 114157617289592232}
   m_Layer: 12
   m_Name: Main Castle
   m_TagString: Building
@@ -5809,8 +5809,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1336233752851366}
   m_LocalRotation: {x: -0, y: -0.04901169, z: -0, w: 0.99879825}
-  m_LocalPosition: {x: -12.74, y: -0.506, z: -2.25}
-  m_LocalScale: {x: 0.0372125, y: 0.0372125, z: 0.037212502}
+  m_LocalPosition: {x: -20.033577, y: -0.43389997, z: 18.407791}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children:
   - {fileID: 224955584801103804}
   - {fileID: 4862025471090750}
@@ -14432,6 +14432,22 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114157617289592232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1336233752851366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc48c907e26b8f4a870724eddf6dc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 200
+  startLives: 200
+  size: 2.5
+  regeneration: 0.01
+  healthBar: {fileID: 114231647063565340}
 --- !u!114 &114231647063565340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14595,6 +14611,11 @@ MonoBehaviour:
     troopCosts: 0
     buttonImage: {fileID: 0}
     button: {fileID: 0}
+  Colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &114311277876922652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14649,21 +14670,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   isBuildable: 0
---- !u!114 &114402252299620088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1336233752851366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0299d4f9f80bc43af0c7075ec37483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startHealth: 100
-  amount: 0.2
-  regeneration: 0.01
-  healthBar: {fileID: 114231647063565340}
 --- !u!114 &114457649527667388
 MonoBehaviour:
   m_ObjectHideFlags: 1
