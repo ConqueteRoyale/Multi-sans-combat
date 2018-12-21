@@ -553,8 +553,6 @@
     <Compile Include="Assets\Scripts\Multiplayer\LobbyNetwork.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MainCanvasManager.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\NetworkCharacterMULTITEST.cs" />
-    <Compile Include="Assets\Scripts\Multiplayer\NewBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Multiplayer\PlayerConnexion.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\PlayerLayoutGroup.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\PlayerListing.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\PlayerNetwork.cs" />
@@ -567,6 +565,8 @@
     <Compile Include="Assets\Scripts\Selection Unit\SelectionSquare.cs" />
     <Compile Include="Assets\Scripts\Selection Unit\SelectionUnit.cs" />
     <Compile Include="Assets\Scripts\TestMouvementFormation.cs" />
+    <Compile Include="Assets\Scripts\UnitController.cs" />
+    <Compile Include="Assets\Scripts\UnitMove.cs" />
     <Compile Include="Assets\Scripts\Utilities\GestionEconomie.cs" />
     <Compile Include="Assets\Scripts\Utilities\GestionMine.cs" />
     <Compile Include="Assets\Scripts\Utilities\GestionMineGrande.cs" />
@@ -574,8 +574,6 @@
     <Compile Include="Assets\Scripts\Utilities\VariablesGlobales.cs" />
     <Compile Include="Assets\Scripts\Utilities\WeaponHook.cs" />
     <Compile Include="Assets\Test_Option\test.cs" />
-    <Compile Include="Assets\UnitController.cs" />
-    <Compile Include="Assets\UnitMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LowpolyWeaponPack\README.txt" />
@@ -634,7 +632,6 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
     <None Include="Assets\Projector\ProjectorAdditiveTint.shader" />
-    <None Include="Assets\ProjectorAdditiveTint.shader" />
     <None Include="Assets\QuickOutline\Readme.txt" />
     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
@@ -659,6 +656,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\UI_Element\ProjectorAdditiveTint.shader" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

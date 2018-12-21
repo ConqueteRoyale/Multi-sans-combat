@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+//2018-13-21
+//Kevin Langlois
+//Script qui gere la création d'un salon dans la liste et qui ajoute les eventlistener au bouton 
 public class RoomListing : MonoBehaviour
 {
     [SerializeField]
@@ -14,7 +16,7 @@ public class RoomListing : MonoBehaviour
 
     public bool Updated { get; set; }
 
-    // Start is called before the first frame update
+    // 
     private void Start()
     {
         GameObject lobbyCanvasObj = MainCanvasManager.Instance.LobbyCanvas.gameObject;
@@ -29,6 +31,7 @@ public class RoomListing : MonoBehaviour
         
     }
 
+    //détruit tous les events listener lorsque la room n'est plus disponible
     private void OnDestroy()
     {
         Button button = GetComponent<Button>();

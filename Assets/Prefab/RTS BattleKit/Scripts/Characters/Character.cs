@@ -2,7 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.AI;
-
+//2018-13-21
+//
+//Script qui gere le comportement d'une unité
 /* ==========================================================================================================================================================================================*/
 /* ==========================================================================================================================================================================================*/
 /* ==============================================================   OPTIMIZED FOR CONQUETE ROTALE   =========================================================================================*/
@@ -205,14 +207,14 @@ public class Character : Photon.MonoBehaviour
 
 if (!goingToClickedPos)
         {
-            Debug.Log("il marche 207");
+            
             //If there's a currentTarget and its within the attack range, move agent to currenttarget
             // 
             if (currentTarget != null && Vector3.Distance(transform.position, currentTarget.transform.position) < minAttackDistance)
             {
 
                 agent.destination = currentTarget.position;
-                Debug.Log("VAS CHERCHER");
+              
 
                 //check if character has reached its target and than rotate towards target and attack it
                 if (Vector3.Distance(currentTarget.position, transform.position) <= agent.stoppingDistance)
@@ -232,9 +234,9 @@ if (!goingToClickedPos)
                         source.Play();
                     }
 
-                    Debug.Log("Perd des points de vie");
+                   
                     currentTarget.gameObject.GetComponent<Character>().lives -= Time.deltaTime * damage;
-                    Debug.Log(" points de vie" + currentTarget.gameObject.GetComponent<Character>().lives);
+                   
                     /***********************************************************************************************************************************/
                     //Je detruit l'unité sur le network lorsque sa vie atteint 0.
                     //Lorsque la vie de la target de l'unité est 0 elle se détruit sur tout le network je crois que c'est le mieux qu'on peut atteindre en terme de synchronisation
@@ -341,20 +343,19 @@ if (!goingToClickedPos)
     {
         //find all potential targets (enemies of this character)
         enemies = GameObject.FindGameObjectsWithTag(attackTag);
-        Debug.Log("A :" + enemies.Length);
+      
         //distance between character and its nearest enemy
         float closestDistance = Mathf.Infinity;
 
         foreach (GameObject potentialTarget in enemies)
         {
-            Debug.Log("Attaquant" + gameObject.transform.GetChild(2).GetComponent<Renderer>().material.color);
-            Debug.Log("Enemi" + potentialTarget.transform.GetChild(2).GetComponent<Renderer>().material.color);
+     
 
             //check if there are enemies left to attack and check per enemy if its closest to this character
             // 
             if (Vector3.Distance(transform.position, potentialTarget.transform.position) < closestDistance && potentialTarget != null && gameObject.transform.GetChild(2).GetComponent<Renderer>().material.color != potentialTarget.transform.GetChild(2).GetComponent<Renderer>().material.color)
             {
-                Debug.Log("Enemi en cours d'attaque");
+               
                 //if this enemy is closest to character, set closest distance to distance between character and enemy
                 closestDistance = Vector3.Distance(transform.position, potentialTarget.transform.position);
                 //also set current target to closest target (this enemy)
@@ -362,7 +363,7 @@ if (!goingToClickedPos)
                 if (!currentTarget || (currentTarget && Vector3.Distance(transform.position, currentTarget.position) > 2))
                 {
                     currentTarget = potentialTarget.transform;
-                    Debug.Log(currentTarget);
+                  
                 }
             }
         }
@@ -417,7 +418,7 @@ if (!goingToClickedPos)
     /* ==========================================================================================================================================================================================*/
     public IEnumerator die()
     {
-        Debug.Log("DIE BITCH");
+       
 
         if (ragdoll == null)
         {

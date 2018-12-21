@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+//2018-13-21
+//Kevin Langlois
+//Script qui gère le lancement d'une partie en chargeant la scene multijoueur pour tous les joueurs présent dans la room au même moment
 
 public class CurrentRoomCanvas : MonoBehaviour
 {

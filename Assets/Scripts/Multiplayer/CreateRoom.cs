@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//2018-13-21
+//Kevin Langlois
+//Script qui permet la création d'une room que les autres joueurs peuvent rejoindre
 public class CreateRoom : MonoBehaviour
 {
     [SerializeField]

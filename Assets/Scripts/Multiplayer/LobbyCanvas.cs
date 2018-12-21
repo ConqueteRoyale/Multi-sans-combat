@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//2018-13-21
+//Kevin Langlois
+//Script qui gere le lobby canvas
 public class LobbyCanvas : MonoBehaviour
 {
     [SerializeField]

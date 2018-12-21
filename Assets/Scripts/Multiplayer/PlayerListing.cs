@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+//2018-13-21
+//Kevin Langlois
+//Script qui met le joueur créer avec son # dans la liste de joueurs
 public class PlayerListing : MonoBehaviour
 {
     

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//2018-13-21
+//Kevin Langlois
+//Script qui gere la connection des joueurs au serveur PHOTON et qui créée le lobby lorsque les joueurs se connectent au master 
 public class LobbyNetwork : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     private void Start()
     {
         print("Connecting to server. . .");

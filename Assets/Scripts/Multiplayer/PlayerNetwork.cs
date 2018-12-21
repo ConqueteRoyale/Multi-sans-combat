@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+//2018-13-21
+//Kevin Langlois
+//Script principal qui sert à la création du joueur. On y attribue un nom et un # au hasard et on spawn le joueur sur la prochaine scene selon des coordonnées spécifiques
 public class PlayerNetwork : MonoBehaviour {
 
 	public static PlayerNetwork Instance;
@@ -19,13 +22,9 @@ public class PlayerNetwork : MonoBehaviour {
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
 
         
-
-
-
-
     }
 	
-
+    //Contrôle ce qui est spawner dans chacune des versions selon s'il s'agit du master client ou de simple client
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if(scene.name == "Scene_Multijoueur")
@@ -54,6 +53,7 @@ public class PlayerNetwork : MonoBehaviour {
         PhotonNetwork.LoadLevel(3);
     }
 
+    //Affiche dans la console si tous les joueurs présents dans la rooms sont créés sur la scene suivante
     [PunRPC]
     private void RPC_LoadedGameScene()
     {
@@ -66,6 +66,7 @@ public class PlayerNetwork : MonoBehaviour {
         }
     } 
 
+    //Permet de spawner les joueurs sur la scene. Ils sont spawnés selon le nb de joueurs présent à des endroits différents sur la scene
     [PunRPC]
     private void RPC_CreatePlayer()
     {

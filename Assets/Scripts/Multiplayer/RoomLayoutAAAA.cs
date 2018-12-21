@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+//2018-13-21
+//Kevin Langlois
+//Script qui ajoute le nom de la room entré par le joueur et le met sur le bouton qui permet aux autre joueurs de rejoindre la room
 public class RoomLayoutAAAA : MonoBehaviour
 {
     [SerializeField]
@@ -28,6 +30,7 @@ public class RoomLayoutAAAA : MonoBehaviour
         RemoveOldRooms();
     }
 
+    //ajoute le nom entrer par le joueur à la room
     private void RoomReceived(RoomInfo room)
     {
         int index = RoomListingButtons.FindIndex(x => x.RoomName == room.Name);
@@ -55,6 +58,7 @@ public class RoomLayoutAAAA : MonoBehaviour
         }
     }
 
+    //détruit les room qui ne sont plus utilisés (lorsqu'il n'y a plus de joueur à l'intérieur
     private void RemoveOldRooms()
     {
         List<RoomListing> removeRooms = new List<RoomListing>();

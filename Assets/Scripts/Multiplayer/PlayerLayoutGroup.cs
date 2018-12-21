@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//2018-13-21
+//Kevin Langlois
+//Script qui gere la création d'un salon dans la liste et qui ajoute les eventlistener au bouton 
 public class PlayerLayoutGroup : MonoBehaviour
 {
     [SerializeField]
@@ -56,7 +58,7 @@ public class PlayerLayoutGroup : MonoBehaviour
         PlayerLeftRoom(photonPlayer);
     }
 
-
+    //Ajoute un joueur à la liste de joueurs présent sur la scène
     private void PlayerJoinedRoom(PhotonPlayer photonPlayer)
     {
         if (photonPlayer == null)
@@ -73,6 +75,7 @@ public class PlayerLayoutGroup : MonoBehaviour
 
     }
 
+    //Retire un joueur de la liste des joueurs de la room lorsque celui-ci quitte
     private void PlayerLeftRoom(PhotonPlayer photonplayer)
     {
 
@@ -87,6 +90,7 @@ public class PlayerLayoutGroup : MonoBehaviour
 
     }
 
+    //Permet de changer la visibilité de la room créer
     public void OnClickRoomState()
     {
         if (!PhotonNetwork.isMasterClient)

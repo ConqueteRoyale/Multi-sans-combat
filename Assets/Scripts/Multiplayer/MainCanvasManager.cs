@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//2018-13-21
+//Kevin Langlois
+//Script qui  ajoute un accesseur au canvas qui contient tout le UI du lobbby multijoueur
 public class MainCanvasManager : MonoBehaviour
 {
     public static MainCanvasManager Instance;

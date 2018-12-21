@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//2018-13-21
+//Kevin Langlois
+//Script qui permet la synchronisation de data entre les clients du serveur
 public class NetworkCharacterMULTITEST : MonoBehaviour {
 
 	Animator anim;
