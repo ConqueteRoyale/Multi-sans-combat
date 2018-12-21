@@ -215,7 +215,7 @@ public class CharacterManager : Photon.MonoBehaviour {
 
     public IEnumerator enemiesLeft()
     {
-        yield return new WaitForSeconds(175f);
+        yield return new WaitForSeconds(115f);
         VariablesGlobales.effectifTotal_joueurs = 0;
         foreach (GameObject knight in knights)
         {

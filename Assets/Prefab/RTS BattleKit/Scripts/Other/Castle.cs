@@ -21,7 +21,7 @@ public class Castle : MonoBehaviour {
     
     public IEnumerator endGameAlternatif()
     {
-        yield return new WaitForSeconds(180f);
+        yield return new WaitForSeconds(120f);
         Die();
     }
 

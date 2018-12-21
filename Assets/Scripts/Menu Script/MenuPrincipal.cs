@@ -12,6 +12,8 @@ public class MenuPrincipal : MonoBehaviour
     public GameObject victoireTitre;
     public GameObject defaiteTitre;
     public int countJoueur2;
+    public Text effectifFinal;
+
     public void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -21,16 +23,8 @@ public class MenuPrincipal : MonoBehaviour
 
         if (sceneName == "Scene_FinJeu")
         {
-            Debug.Log("IUOIIUOPUIOCSGUI");
-            countJoueur2 = VariablesGlobales.effectifTotal_joueurs - VariablesGlobales.effectifTotal_joueur_01;
-            if (VariablesGlobales.effectifTotal_joueur_01 < countJoueur2)
-            {
-                defaiteTitre.SetActive(true);
-            }
-            else
-            {
-                victoireTitre.SetActive(true);
-            }
+            effectifFinal.text = "Effectif final: " + VariablesGlobales.effectifTotal_joueur_01.ToString();
+           
         }
     }
     public void JouerSolo()
